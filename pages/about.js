@@ -24,7 +24,7 @@ const About = () => {
             {
               mySkills.map((skill) =>{
                 return(
-                  <div className="bg-black w-32 h-64">
+                  <div className="bg-black w-32 h-64" key={skill}>
                     jasdklfja;ldfkj
                   </div>
                 )

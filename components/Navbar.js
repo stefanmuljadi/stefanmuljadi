@@ -13,11 +13,7 @@ const Navbar = ({ dest, setDest }) => {
     <>
     {/* desktop */}
       <div className="hidden lg:block bg-transparent lg:px-72 py-6 w-full text-primary">
-        <nav className="flex flex-row justify-between items-center w-screen">
-          {/* Logo */}
-          <div>
-
-          </div>
+        <nav className="flex flex-row items-center justify-center w-3/4">
           {/* Nav */}
           <div className="lg:w-1/2 flex flex-row items-center justify-center gap-12 font-semibold">
             <button onClick={() => setDest("Home")}>Home</button>

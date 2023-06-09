@@ -59,7 +59,7 @@ export default function Home({ dest }) {
             <div className="lg:w-[42rem] text-justify text-white font-semibold pt-2">
             I am a second-year computer science student at City University of Hong Kong with a passion for exploring the possibilities of technology to drive positive change. My studies and experience have equipped me with the skills and knowledge to pursue a career in this dynamic and constantly evolving field.
             </div>
-            <a href="https://www.linkedin.com/in/stefanmuljadi/"><Image className="h-8 mt-2" src="/linkedin.png" alt='flag' /></a>
+            <a href="https://www.linkedin.com/in/stefanmuljadi/"><img className="h-8 mt-2" src="/linkedin.png" alt='flag' /></a>
           </div>
           <div className="w-1/2 h-3/4 cursor-pointer z-20 hidden lg:block">
             <Canvas className="w-1/2 rounded-lg border-4 border-primary" shadows dpr={[1, 2]} camera={{rotateY:10, position: [0, 0, 4], fov: 80 }}>
@@ -71,12 +71,12 @@ export default function Home({ dest }) {
               Play with me!👆
             </div>
           </div>
-          <Image className="absolute z-5 w-[40rem] -top-64 -left-64" src={"blob (1).svg"} alt="blob"/>
+          <img className="absolute z-5 w-[40rem] -top-64 -left-64" src={"blob (1).svg"} alt="blob"/>
         </div>
         <div className="snap-start overflow-x-hidden" id="Experience">
           <Experience/>
         </div>
-        <Image className="hidden lg:block absolute z-0 w-[40rem] top-72 -right-64" src={"blob (1).svg"} alt="blob 2"/>
+        <img className="hidden lg:block absolute z-0 w-[40rem] top-72 -right-64" src={"blob (1).svg"} alt="blob 2"/>
         <div className="snap-start overflow-x-hidden" id="Education">
           <Education/>
         </div>

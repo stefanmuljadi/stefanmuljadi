@@ -8,11 +8,11 @@ const Education = () => {
     return (
         <>
         <div className="w-full text-black">
-            <div className="px-12 lg:px-24 py-16 z-20 w-full bg-primary">
+            <div className="px-12 lg:px-24 py-16 z-20 w-full bg-primary pb-24">
                 <div className='text-4xl lg:text-6xl font-allenoire pb-8 text-white'>
                     My Education
                 </div>
-                <div className="flex flex-col gap-12 h-full">
+                <div className="flex flex-col gap-12 h-full ">
                     {/* Year */}
                     <div className="flex flex-col gap-8 text-black">
                         <div className='text-2xl lg:text-4xl font-allenoire '>

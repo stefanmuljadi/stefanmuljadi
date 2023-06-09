@@ -10,14 +10,14 @@ import Image from "next/image";
 
 const Computer = () => {
   const gltf = useLoader(GLTFLoader, "/new_computer/scene.gltf");
-  return (
-    <>
-      <Suspense fallback={null}>
-        <primitive object={gltf.scene} scale={0.6} />
-        <OrbitControls />
-      </Suspense>
-    </>
-  );
+  return(
+      <>
+        <Suspense fallback={null}>
+          <primitive object={gltf.scene} scale={0.6} />
+          <OrbitControls />
+        </Suspense>
+      </>
+  )
 };
 
 export default function Home({ dest }) {

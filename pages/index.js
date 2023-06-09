@@ -71,12 +71,12 @@ export default function Home({ dest }) {
               Play with me!👆
             </div>
           </div>
-          <Image className="absolute z-5 w-[40rem] -top-64 -left-64" src={"blob (1).svg"}/>
+          <Image className="absolute z-5 w-[40rem] -top-64 -left-64" src={"blob (1).svg"} alt="blob"/>
         </div>
         <div className="snap-start overflow-x-hidden" id="Experience">
           <Experience/>
         </div>
-        <Image className="hidden lg:block absolute z-0 w-[40rem] top-72 -right-64" src={"blob (1).svg"}/>
+        <Image className="hidden lg:block absolute z-0 w-[40rem] top-72 -right-64" src={"blob (1).svg"} alt="blob 2"/>
         <div className="snap-start overflow-x-hidden" id="Education">
           <Education/>
         </div>

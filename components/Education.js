@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 const flagemojiToPNG = (flag) => {
-    return (<img className="h-full mb-2" src={`https://flagcdn.com/24x18/${flag}.png`} alt='flag' />)
+    return (<Image className="h-full mb-2" src={`https://flagcdn.com/24x18/${flag}.png`} alt='flag' />)
 }
 
 const Education = () => {

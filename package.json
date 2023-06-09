@@ -21,6 +21,7 @@
     "react-dom": "18.2.0",
     "react-use-scroll-snap": "0.0.4",
     "three": "^0.148.0",
+    "tiny-flag-react": "^2.0.2",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {

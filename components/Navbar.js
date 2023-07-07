@@ -12,14 +12,14 @@ const Navbar = ({ dest, setDest }) => {
   return (
     <>
     {/* desktop */}
-      <div className="hidden lg:block bg-transparent lg:px-72 py-6 w-full text-primary">
-        <nav className="flex flex-row items-center justify-center w-3/4">
+      <div className="hidden lg:block bg-transparent lg:px-72 py-6 w-full text-white">
+        <nav className="flex flex-row items-center justify-center px-5 w-min py-3 backdrop-blur-sm bg-primary/40 rounded-full border-primar border-[0.5px]">
           {/* Nav */}
-          <div className="lg:w-1/2 flex flex-row items-center justify-center gap-12 font-semibold">
-            <button onClick={() => setDest("Home")}>Home</button>
-            <button onClick={() => setDest("Experience")} className="">Experiences</button>
-            <button onClick={() => setDest("Education")} className="">Education</button>
-            <button className="bg-primary text-black rounded-xl px-2 py-1 transition ease-in-out hover:scale-110 duration-300" onClick={saveFile}>Resume</button>
+          <div className="lg:w-1/2 flex flex-row items-center justify-center gap-12 font-black">
+            <button  onClick={() => setDest("Home")}><p className="px-2 py-1 rounded-full backdrop-blur-sm bg-primary/10">Home</p></button>
+            <button  onClick={() => setDest("Experience")}><p className="px-2 py-1 rounded-full backdrop-blur-sm bg-primary/10">Experiences</p></button>
+            <button  onClick={() => setDest("Education")}><p className="px-2 py-1 rounded-full backdrop-blur-sm bg-primary/10">Education</p></button>
+            <button className="bg-primary text-black font-black rounded-full px-2 py-1 transition ease-in-out hover:scale-110 duration-300" onClick={saveFile}>Resume</button>
 
           </div>
 

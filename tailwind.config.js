@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary' : '#C55FFC'
+        // 'primary' : '#C55FFC'
+        'primary': '#F28500',
       },
       fontFamily: {
         'allenoire': ['Allenoire', 'sans-serif']

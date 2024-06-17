@@ -1,10 +1,9 @@
 import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useKeypress from "react-use-keypress";
 import SharedModal from "./SharedModal";
-
 export default function Modal({
   images,
   onClose,
@@ -51,6 +50,11 @@ export default function Modal({
     }
   });
 
+  useEffect(() => {
+    console.log(images)
+  }, [])
+  
+
   return (
     <Dialog
       static
@@ -73,6 +77,7 @@ export default function Modal({
         images={images}
         changePhotoId={changePhotoId}
         closeModal={handleClose}
+        currentPhoto={images[photoId]}
         navigation={true}
       />
     </Dialog>

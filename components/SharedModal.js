@@ -8,26 +8,24 @@ import {
 } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { variants } from "../utils/animationVariants";
 import downloadPhoto from "../utils/downloadPhoto";
 import { range } from "../utils/range";
+import getResults from "../utils/cachedImages";
 
 export default function SharedModal({
   index,
-  images,
   changePhotoId,
   closeModal,
   navigation,
   currentPhoto,
   direction,
 }) {
-  const [loaded, setLoaded] = useState(false);
-
-  let filteredImages = images?.filter((img) =>
-    range(index - 15, index + 15).includes(img.id),
-  );
+  const [isLoading, setIsLoading] = useState(true);
+  const [images, setImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -43,8 +41,22 @@ export default function SharedModal({
     trackMouse: true,
   });
 
-  let currentImage = images ? images[index] : currentPhoto;
-  console.log(currentImage.url)
+
+  const getImages = () => {
+    const rawImages = getResults().then((results) => {
+      let cutImages = results.filter((img) => range(index - 15, index + 15).includes(img.id))
+      setFilteredImages(cutImages)
+      setImages(results)
+      setIsLoading(false)
+    })
+  }
+
+  useEffect(() => {
+    getImages();
+    console.log("3. ", images.length)
+    setIsLoading(false)
+
+  }, [currentPhoto])
 
   return (
     <MotionConfig
@@ -70,15 +82,17 @@ export default function SharedModal({
                 exit="exit"
                 className="absolute"
               >
-                <Image
-                  src={currentImage.url}
+                {
+                  currentPhoto &&
+                  <Image
+                  src={currentPhoto.url}
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
                   priority
-                  alt="Next.js Conf image"
-                  onLoad={() => setLoaded(true)}
-                  unoptimized
+                  onLoad={() => setIsLoading(true)}
                 />
+                }
+
               </motion.div>
             </AnimatePresence>
           </div>
@@ -87,7 +101,7 @@ export default function SharedModal({
         {/* Buttons + bottom nav bar */}
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
-          {loaded && (
+          {(
             <div className="relative aspect-[3/2] max-h-full w-full">
               {navigation && (
                 <>
@@ -114,7 +128,7 @@ export default function SharedModal({
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                 {navigation && (
                   <a
-                    href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${currentImage.public_id}.${currentImage.format}`}
+                    href={currentPhoto.url}
                     className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                     target="_blank"
                     title="Open fullsize version"
@@ -158,7 +172,7 @@ export default function SharedModal({
                 className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14"
               >
                 <AnimatePresence initial={false}>
-                  {filteredImages.map(({ url, id }) => (
+                  {filteredImages.map(({ blurDataURL, id }) => (
                     <motion.button
                       initial={{
                         width: "0%",
@@ -189,8 +203,7 @@ export default function SharedModal({
                             ? "brightness-110 hover:brightness-110"
                             : "brightness-50 contrast-125 hover:brightness-75"
                         } h-full transform object-cover transition`}
-                        src={url}
-                        unoptimized
+                        src={blurDataURL}
                       />
                     </motion.button>
                   ))}
